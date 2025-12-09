@@ -7,35 +7,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MauiProjekt14D20251210.ViewModels
+namespace MauiProjekt14D20251210.ViewModels;
+
+public class AddBookViewModel : BaseViewModel
 {
-    public class AddBookViewModel : BaseViewModel
+    private readonly DatabaseService _database;
+
+    public string Title { get; set; }
+    public string Author { get; set; }
+
+    public ICommand SaveCommand { get; }
+
+    public AddBookViewModel(DatabaseService database)
     {
-        private readonly DatabaseService db;
-
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public int Year { get; set; }
-
-        public ICommand SaveCommand { get; }
-
-        public AddBookViewModel(DatabaseService databaseService)
+        _database = database;
+        SaveCommand = new Command(async () =>
         {
-            db = databaseService;
-            SaveCommand = new Command(async () => await Save());
-        }
-
-        private async Task Save()
-        {
-            await db.AddBookAsync(new Book
-            {
-                Title = Title,
-                Author = Author,
-                Year = Year
-            });
-
+            var book = new Book { Title = Title, Author = Author };
+            await _database.AddBookAsync(book);
             await Shell.Current.GoToAsync("..");
-        }
+        });
     }
-
 }
+

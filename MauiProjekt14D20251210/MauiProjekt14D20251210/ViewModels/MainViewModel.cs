@@ -7,32 +7,33 @@ using MauiProjekt14D20251210.Models;
 using MauiProjekt14D20251210.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using MauiProjekt14D20251210.Views;
 
-namespace MauiProjekt14D20251210.ViewModels
+namespace MauiProjekt14D20251210.ViewModels;
+
+public class MainViewModel : BaseViewModel
 {
-    public class MainViewModel : BaseViewModel
+    private readonly DatabaseService _database;
+
+    public ObservableCollection<Book> Books { get; } = new ObservableCollection<Book>();
+
+    public ICommand LoadCommand { get; }
+    public ICommand AddBookCommand { get; }
+
+    public MainViewModel(DatabaseService database)
     {
-        private readonly DatabaseService db;
+        _database = database;
 
-        public ObservableCollection<Book> Books { get; set; } = new();
-
-        public ICommand LoadCommand { get; }
-        public ICommand AddBookCommand { get; }
-
-        public MainViewModel(DatabaseService databaseService)
-        {
-            db = databaseService;
-
-            LoadCommand = new Command(async () => await LoadBooks());
-            AddBookCommand = new Command(async () =>
-                await Shell.Current.GoToAsync("AddBookPage"));
-        }
-
-        public async Task LoadBooks()
+        LoadCommand = new Command(async () =>
         {
             Books.Clear();
-            var list = await db.GetBooksAsync();
-            foreach (var book in list) Books.Add(book);
-        }
+            var list = await _database.GetBooksAsync();
+            foreach (var book in list)
+                Books.Add(book);
+        });
+
+        AddBookCommand = new Command(async () =>
+            await Shell.Current.GoToAsync(nameof(AddBookPage)));
     }
 }
+

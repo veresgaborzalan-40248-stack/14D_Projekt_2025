@@ -3,16 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiProjekt14D20251210.Views.EditBookPage"
              Title="Könyv szerkesztése">
-    <VerticalStackLayout Padding="20">
 
-        <Entry Placeholder="Cím" Text="{Binding Book.Title}" />
-        <Entry Placeholder="Szerző" Text="{Binding Book.Author}" />
-        <Entry Placeholder="Év" Text="{Binding Book.Year}" />
+    <StackLayout Padding="10" Spacing="10">
+        <Entry Placeholder="Cím" Text="{Binding Title}" />
+        <Entry Placeholder="Szerző" Text="{Binding Author}" />
 
-        <Button Text="Mentés" Command="{Binding UpdateCommand}" />
+        <Button Text="Mentés" 
+                Command="{Binding SaveCommand}" 
+                BackgroundColor="DarkGreen" 
+                TextColor="White" />
 
-        <Button Text="Törlés"
-                TextColor="Red"
-                Command="{Binding DeleteCommand}" />
-    </VerticalStackLayout>
+        <Button Text="Törlés" 
+                Command="{Binding DeleteCommand}" 
+                BackgroundColor="DarkRed" 
+                TextColor="White" />
+    </StackLayout>
 </ContentPage>

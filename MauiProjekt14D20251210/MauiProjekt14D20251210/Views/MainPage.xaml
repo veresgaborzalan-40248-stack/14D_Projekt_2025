@@ -3,28 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiProjekt14D20251210.Views.MainPage"
              Title="Könyvek">
-    <VerticalStackLayout Padding="20">
 
+    <StackLayout Padding="10">
         <Button Text="Új könyv hozzáadása"
-                BackgroundColor="{StaticResource Primary}"
-                TextColor="White"
-                Command="{Binding AddBookCommand}" />
+                Command="{Binding AddBookCommand}"
+                BackgroundColor="DarkBlue"
+                TextColor="White" />
 
         <CollectionView ItemsSource="{Binding Books}"
                         SelectionMode="Single"
                         SelectionChanged="OnBookSelected">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BorderColor="{StaticResource Secondary}" Padding="10">
-                        <VerticalStackLayout>
-                            <Label Text="{Binding Title}" FontSize="Medium" TextColor="{StaticResource TextDark}" />
-                            <Label Text="{Binding Author}" FontSize="Small" />
-                            <Label Text="{Binding Year}" FontSize="Small" />
-                        </VerticalStackLayout>
-                    </Frame>
+                    <StackLayout Padding="5">
+                        <Label Text="{Binding Title}" FontSize="20" />
+                        <Label Text="{Binding Author}" FontSize="16" TextColor="Gray"/>
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-    </VerticalStackLayout>
+    </StackLayout>
 </ContentPage>

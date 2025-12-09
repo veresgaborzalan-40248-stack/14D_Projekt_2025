@@ -3,15 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiProjekt14D20251210.Views.AddBookPage"
              Title="Új könyv">
-    <VerticalStackLayout Padding="20">
 
+    <StackLayout Padding="10" Spacing="10">
         <Entry Placeholder="Cím" Text="{Binding Title}" />
         <Entry Placeholder="Szerző" Text="{Binding Author}" />
-        <Entry Placeholder="Év" Keyboard="Numeric" Text="{Binding Year}" />
-
-        <Button Text="Mentés"
-                BackgroundColor="{StaticResource Primary}"
-                TextColor="White"
-                Command="{Binding SaveCommand}" />
-    </VerticalStackLayout>
+        <Button Text="Mentés" Command="{Binding SaveCommand}" BackgroundColor="DarkGreen" TextColor="White"/>
+    </StackLayout>
 </ContentPage>
