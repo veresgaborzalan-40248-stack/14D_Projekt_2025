@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiProjekt14D20251210.Views.MainPage"
+             Title="Könyvek">
+    <VerticalStackLayout Padding="20">
+
+        <Button Text="Új könyv hozzáadása"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White"
+                Command="{Binding AddBookCommand}" />
+
+        <CollectionView ItemsSource="{Binding Books}"
+                        SelectionMode="Single"
+                        SelectionChanged="OnBookSelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="{StaticResource Secondary}" Padding="10">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Title}" FontSize="Medium" TextColor="{StaticResource TextDark}" />
+                            <Label Text="{Binding Author}" FontSize="Small" />
+                            <Label Text="{Binding Year}" FontSize="Small" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

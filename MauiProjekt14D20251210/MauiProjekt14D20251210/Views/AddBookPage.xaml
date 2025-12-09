@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiProjekt14D20251210.Views.AddBookPage"
+             Title="Új könyv">
+    <VerticalStackLayout Padding="20">
+
+        <Entry Placeholder="Cím" Text="{Binding Title}" />
+        <Entry Placeholder="Szerző" Text="{Binding Author}" />
+        <Entry Placeholder="Év" Keyboard="Numeric" Text="{Binding Year}" />
+
+        <Button Text="Mentés"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White"
+                Command="{Binding SaveCommand}" />
+    </VerticalStackLayout>
+</ContentPage>

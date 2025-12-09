@@ -8,8 +8,10 @@
     Title="MauiProjekt14D20251210">
 
     <ShellContent
-        Title="Home"
+        Title="Könyvek"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    <ShellContent Route="AddBookPage" ContentTemplate="{DataTemplate local:AddBookPage}" />
+    <ShellContent Route="EditBookPage" ContentTemplate="{DataTemplate local:EditBookPage}" />
 
 </Shell>
